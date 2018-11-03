@@ -5,7 +5,7 @@ function file_ico($item){
   if(in_array($ext,['bmp','jpg','jpeg','png','gif','svg'])){
   	return "image";
   }
-  if(in_array($ext,['mp4','mkv','webm','avi','mpg', 'mpeg', 'rm', 'rmvb', 'mov', 'wmv', 'mkv', 'asf'])){
+  if(in_array($ext,['mp4','mkv','webm','avi','mpg','mpeg','rm','rmvb','mov','wmv','mkv','asf','flv'])){
   	return "movie";
   }
   if(in_array($ext,['ogg','mp3','wav','weba'])){
@@ -72,7 +72,7 @@ function file_ico($item){
 			<tr><th valign="top"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWAQMAAAD6jy5FAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAAtJREFUCNdjoBEAAABYAAFwhck+AAAAAElFTkSuQmCC" alt="[ICO]"></th><th>Name</th><th>Last modified</th><th>Size</th><th>Description</th></tr>
 			<tr><th colspan="5"><hr></th></tr>
 <?php if($path != '/'):?>			<tr><td valign="top"><img src="data:image/gif;base64,R0lGODlhFAAWAMIAAP///8z//5mZmWZmZjMzMwAAAAAAAAAAACH+TlRoaXMgYXJ0IGlzIGluIHRoZSBwdWJsaWMgZG9tYWluLiBLZXZpbiBIdWdoZXMsIGtldmluaEBlaXQuY29tLCBTZXB0ZW1iZXIgMTk5NQAh+QQBAAABACwAAAAAFAAWAAADSxi63P4jEPJqEDNTu6LO3PVpnDdOFnaCkHQGBTcqRRxuWG0v+5LrNUZQ8QPqeMakkaZsFihOpyDajMCoOoJAGNVWkt7QVfzokc+LBAA7" alt="[PARENTDIR]"></td><td><a href="<?php echo get_absolute_path($root.$path.'../');?>">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td><td>&nbsp;</td></tr>
-<?php endif;?><?php foreach((array)$items as $item):?><?php if(!empty($item['folder'])):?>			<tr><td valign="top"><img src="data:image/gif;base64,R0lGODlhFAAWAMIAAP/////Mmcz//5lmMzMzMwAAAAAAAAAAACH+TlRoaXMgYXJ0IGlzIGluIHRoZSBwdWJsaWMgZG9tYWluLiBLZXZpbiBIdWdoZXMsIGtldmluaEBlaXQuY29tLCBTZXB0ZW1iZXIgMTk5NQAh+QQBAAACACwAAAAAFAAWAAADVCi63P4wyklZufjOErrvRcR9ZKYpxUB6aokGQyzHKxyO9RoTV54PPJyPBewNSUXhcWc8soJOIjTaSVJhVphWxd3CeILUbDwmgMPmtHrNIyxM8Iw7AQA7" alt="DIR"></td><td><a href="<?php echo get_absolute_path($root.$path.rawurlencode($item['name']));?>"><?php echo $item['name'];?>/</a></td><td align="right"><?php echo date("Y-m-d H:i:s", $item['lastModifiedDateTime']);?>  </td><td align="right"><?php echo onedrive::human_filesize($item['size']);?></td><td>folder</td></tr>
+<?php endif;?><?php foreach((array)$items as $item):?><?php if(!empty($item['folder'])):?>			<tr><td valign="top"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWAQMAAAD6jy5FAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAAtJREFUCNdjoBEAAABYAAFwhck+AAAAAElFTkSuQmCC" alt="DIR"></td><td><a href="<?php echo get_absolute_path($root.$path.rawurlencode($item['name']));?>"><?php echo $item['name'];?>/</a></td><td align="right"><?php echo date("Y-m-d H:i:s", $item['lastModifiedDateTime']);?>  </td><td align="right"><?php echo onedrive::human_filesize($item['size']);?></td><td>folder</td></tr>
 <?php else: $WFMget_fileicons = file_ico($item); ?>			<tr><td valign="top"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWAQMAAAD6jy5FAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAAtJREFUCNdjoBEAAABYAAFwhck+AAAAAElFTkSuQmCC" alt="<?php echo $WFMget_fileicons;?>"></td><td><a href="<?php echo get_absolute_path($root.$path).rawurlencode($item['name']);?>"><?php echo $item['name'];?></a></td><td align="right"><?php echo date("Y-m-d H:i:s", $item['lastModifiedDateTime']);?>  </td><td align="right"><?php echo onedrive::human_filesize($item['size']);?></td><td><?php echo $WFMget_fileicons;?></td></tr>
 <?php endif;?><?php endforeach;?>
 			<tr><th colspan="5"><hr></th></tr>
