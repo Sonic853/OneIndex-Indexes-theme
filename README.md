@@ -18,9 +18,9 @@ You can try this [demo](https://demo.853lab.com/ "demo").
 
 ## ToDo
 
-- [x]Online view Doc, image and mp4.
-- []Dark theme.
-- []Online view code and other.
+- [x] Online view Doc, image and mp4.
+- [ ] Dark theme.
+- [ ] Online view code and other.
 
 ------------
 
