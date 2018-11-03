@@ -8,10 +8,7 @@
 <?php endif;?>
 			<tr><th colspan="5"><hr></th></tr>
 		</table>
-		<form action="" method="post">
-			<label><br/><b>Enter your password to view the folder.</b></label><br/>
-			<input name="password" type="password"/>
-			<input type="submit"/>
-		</form>
+		<h2><?php e($item['name']);?>: <a href="<?php e($url);?>">Download</a></h2>
+		<img style="max-width:100%;" src="<?php e($item['downloadUrl']);?>"/>
 		<address><?php echo $_SERVER['SERVER_SOFTWARE'];?> <?php if(PATH_SEPARATOR==':'){echo '(Linux)';}else{echo '(Windows)';} ?> Server at <?php echo $_SERVER['SERVER_NAME'];?> Port <?php echo $_SERVER['SERVER_PORT'];?></address>
 <?php view::end('content');?>

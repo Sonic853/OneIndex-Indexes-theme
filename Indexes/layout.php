@@ -59,6 +59,7 @@ img[alt=image]{
 		</style>
 	</head>
 	<body>
-		<?php view::section('content');?>
+<?php view::section('content');?>
+
 	</body>
 </html>
