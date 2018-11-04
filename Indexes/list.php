@@ -44,13 +44,16 @@ function file_ico($item){
   if(in_array($ext,['bin','trx'])){
   	return "binary";
   }
+  if(in_array($ext,['iso','isz','dmg','hfs','img','dvd'])){
+  	return "diskimg";
+  }
   if(in_array($ext,['cpp'])){
   	return "CPP";
   }
   if(in_array($ext,['cs'])){
   	return "CSharp";
   }
-  if(in_array($ext,['zip','rar','7z','cab','tgz','tar.gz','tar.xz','lz','deb'])){
+  if(in_array($ext,['zip','rar','7z','cab','tgz','gz','xz','lz','deb'])){
   	return "compressed";
   }
   if(in_array($ext,['doc','docx','odt','rtf'])){
@@ -61,6 +64,42 @@ function file_ico($item){
   }
   if(in_array($ext,['csv','ods','xls','xlsx'])){
   	return "excel";
+  }
+  if(in_array($ext,['csv','ods','xls','xlsx'])){
+  	return "excel";
+  }
+  if(in_array($ext,['accdb','mdb','accdt'])){
+  	return "access";
+  }
+  if(in_array($ext,['db','db3','sqlite','sqlite3'])){
+  	return "database";
+  }
+  if(in_array($ext,['sql'])){
+  	return "SQL";
+  }
+  if(in_array($ext,['psd','psb','pdd'])){
+  	return "Photoshop";
+  }
+  if(in_array($ext,['sai','sai2'])){
+  	return "SAI";
+  }
+  if(in_array($ext,['xcf'])){
+  	return "GIMP";
+  }
+  if(in_array($ext,['clip'])){
+  	return "CSP";
+  }
+  if(in_array($ext,['mbp'])){
+  	return "MediBang";
+  }
+  if(in_array($ext,['kra'])){
+  	return "Krita";
+  }
+  if(in_array($ext,['xml'])){
+  	return "XML";
+  }
+  if(in_array($ext,['cfg','conf'])){
+  	return "Config";
   }
   return "file";
 }
