@@ -11,6 +11,21 @@ function file_ico($item){
   if(in_array($ext,['ogg','mp3','wav','weba'])){
   	return "sound";
   }
+  if(in_array($ext,['exe'])){
+  	return "Executable-File";
+  }
+  if(in_array($ext,['msi'])){
+  	return "Windows-Installer";
+  }
+  if(in_array($ext,['bat','cmd'])){
+  	return "Batch-File";
+  }
+  if(in_array($ext,['sh'])){
+  	return "shell";
+  }
+  if(in_array($ext,['reg'])){
+  	return "Windows-Registry";
+  }
   if(in_array($ext,['php'])){ //php
   	return "php";
   }
