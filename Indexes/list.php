@@ -137,7 +137,7 @@ function file_ico($item){
 		<script>
 var item = document.getElementsByTagName("a");
 var filelist = new Array("image","movie","sound");
-var filelist2 = new Array("word","powerpoint","excel");
+var filelist2 = new Array("word","powerpoint","excel","text","HTML");
 for(var i=0;i<item.length;i++){
 	item[i].index = i;
 	item[i].addEventListener("click",function(n){
