@@ -8,7 +8,7 @@ function file_ico($item){
   if(in_array($ext,['mp4','mkv','webm','avi','mpg','mpeg','rm','rmvb','mov','wmv','mkv','asf','flv'])){
   	return "movie";
   }
-  if(in_array($ext,['ogg','mp3','wav','weba'])){
+  if(in_array($ext,['ogg','mp3','wav','weba','flac','m4a'])){
   	return "sound";
   }
   if(in_array($ext,['exe'])){
