@@ -1,5 +1,7 @@
 <?php view::layout('layout')?>
 <?php 
+$PDLists = array();foreach((array)$navs as $n=>$l){array_push($PDLists,$l);}$PDTitle = $PDLists[count($PDLists)-1];
+$Linkend = '/?/';
 function file_ico($item){
   $ext = strtolower(pathinfo($item['name'], PATHINFO_EXTENSION));
   if(in_array($ext,['bmp','jpg','jpeg','png','gif','svg'])){
@@ -120,12 +122,13 @@ function file_ico($item){
 }
 ?>
 <?php view::begin('content');?>
-		<h1>Index of <?php echo urldecode($path);?></h1>
+		<h1>Index of <?php echo $PDTitle;?></h1>
 <?php if($head){echo $head;} ?>
 		<table>
 			<tr><th valign="top"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWAQMAAAD6jy5FAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAAtJREFUCNdjoBEAAABYAAFwhck+AAAAAElFTkSuQmCC" alt="[ICO]"></th><th>Name</th><th>Last modified</th><th>Size</th><th>Description</th></tr>
 			<tr><th colspan="5"><hr></th></tr>
-<?php if($path != '/'):?>			<tr><td valign="top"><img src="data:image/gif;base64,R0lGODlhFAAWAMIAAP///8z//5mZmWZmZjMzMwAAAAAAAAAAACH+TlRoaXMgYXJ0IGlzIGluIHRoZSBwdWJsaWMgZG9tYWluLiBLZXZpbiBIdWdoZXMsIGtldmluaEBlaXQuY29tLCBTZXB0ZW1iZXIgMTk5NQAh+QQBAAABACwAAAAAFAAWAAADSxi63P4jEPJqEDNTu6LO3PVpnDdOFnaCkHQGBTcqRRxuWG0v+5LrNUZQ8QPqeMakkaZsFihOpyDajMCoOoJAGNVWkt7QVfzokc+LBAA7" alt="[PARENTDIR]"></td><td><a href="<?php echo get_absolute_path($root.$path.'../');?>">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td><td>&nbsp;</td></tr>
+<?php if(substr(urldecode($PDTitle), 0-strlen($Linkend)) == $Linkend):?>			<tr><td valign="top"><img src="data:image/gif;base64,R0lGODlhFAAWAMIAAP///8z//5mZmWZmZjMzMwAAAAAAAAAAACH+TlRoaXMgYXJ0IGlzIGluIHRoZSBwdWJsaWMgZG9tYWluLiBLZXZpbiBIdWdoZXMsIGtldmluaEBlaXQuY29tLCBTZXB0ZW1iZXIgMTk5NQAh+QQBAAABACwAAAAAFAAWAAADSxi63P4jEPJqEDNTu6LO3PVpnDdOFnaCkHQGBTcqRRxuWG0v+5LrNUZQ8QPqeMakkaZsFihOpyDajMCoOoJAGNVWkt7QVfzokc+LBAA7" alt="[PARENTDIR]"></td><td><a href="<?php echo get_absolute_path($root.$path.'../../');?>">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td><td>&nbsp;</td></tr>
+<?php elseif(urldecode($PDTitle) != '/'):?>			<tr><td valign="top"><img src="data:image/gif;base64,R0lGODlhFAAWAMIAAP///8z//5mZmWZmZjMzMwAAAAAAAAAAACH+TlRoaXMgYXJ0IGlzIGluIHRoZSBwdWJsaWMgZG9tYWluLiBLZXZpbiBIdWdoZXMsIGtldmluaEBlaXQuY29tLCBTZXB0ZW1iZXIgMTk5NQAh+QQBAAABACwAAAAAFAAWAAADSxi63P4jEPJqEDNTu6LO3PVpnDdOFnaCkHQGBTcqRRxuWG0v+5LrNUZQ8QPqeMakkaZsFihOpyDajMCoOoJAGNVWkt7QVfzokc+LBAA7" alt="[PARENTDIR]"></td><td><a href="<?php echo get_absolute_path($root.$path.'../');?>">Parent Directory</a></td><td>&nbsp;</td><td align="right">  - </td><td>&nbsp;</td></tr>
 <?php endif;?><?php foreach((array)$items as $item):?><?php if(!empty($item['folder'])):?>			<tr><td valign="top"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWAQMAAAD6jy5FAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAAtJREFUCNdjoBEAAABYAAFwhck+AAAAAElFTkSuQmCC" alt="DIR"></td><td><a href="<?php echo get_absolute_path($root.$path.rawurlencode($item['name']));?>"><?php echo $item['name'];?>/</a></td><td align="right"><?php echo date("Y-m-d H:i:s", $item['lastModifiedDateTime']);?>  </td><td align="right"><?php echo onedrive::human_filesize($item['size']);?></td><td>folder</td></tr>
 <?php else: $WFMget_fileicons = file_ico($item); ?>			<tr><td valign="top"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWAQMAAAD6jy5FAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAAtJREFUCNdjoBEAAABYAAFwhck+AAAAAElFTkSuQmCC" alt="<?php echo $WFMget_fileicons;?>"></td><td><a href="<?php echo get_absolute_path($root.$path).rawurlencode($item['name']);?>" alt="<?php echo $WFMget_fileicons;?>"><?php echo $item['name'];?></a></td><td align="right"><?php echo date("Y-m-d H:i:s", $item['lastModifiedDateTime']);?>  </td><td align="right"><?php echo onedrive::human_filesize($item['size']);?></td><td><?php echo $WFMget_fileicons;?></td></tr>
 <?php endif;?><?php endforeach;?>
@@ -133,7 +136,6 @@ function file_ico($item){
 		</table>
 <?php if($readme){echo $readme;} ?>
 
-		<address><?php echo $_SERVER['SERVER_SOFTWARE'];?> <?php if(PATH_SEPARATOR==':'){echo '(Linux)';}else{echo '(Windows)';} ?> Server at <?php echo $_SERVER['SERVER_NAME'];?> Port <?php echo $_SERVER['SERVER_PORT'];?></address>
 		<script>
 var item = document.getElementsByTagName("a");
 var filelist = new Array("image","movie","sound");

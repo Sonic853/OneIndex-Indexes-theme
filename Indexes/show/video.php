@@ -3,7 +3,7 @@
 $item['thumb'] = onedrive::thumbnail($item['path']);
 ?>
 <?php view::begin('content');?>
-		<h1>Index of <?php $PDLists = array();foreach((array)$navs as $n=>$l){array_push($PDLists,$l);}$ParentDirectory = $PDLists[count($PDLists)-2];echo urldecode($ParentDirectory);?></h1>
+		<h1>Index of <?php $PDLists = array();foreach((array)$navs as $n=>$l){array_push($PDLists,$l);}$ParentDirectory = $PDLists[count($PDLists)-2];echo $ParentDirectory;?></h1>
 		<table>
 			<tr><th valign="top"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWAQMAAAD6jy5FAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAAtJREFUCNdjoBEAAABYAAFwhck+AAAAAElFTkSuQmCC" alt="[ICO]"></th><th>Name</th><th>Last modified</th><th>Size</th><th>Description</th></tr>
 			<tr><th colspan="5"><hr></th></tr>
@@ -25,5 +25,4 @@ const dp = new DPlayer({
 	}
 });
 	</script>
-		<address><?php echo $_SERVER['SERVER_SOFTWARE'];?> <?php if(PATH_SEPARATOR==':'){echo '(Linux)';}else{echo '(Windows)';} ?> Server at <?php echo $_SERVER['SERVER_NAME'];?> Port <?php echo $_SERVER['SERVER_PORT'];?></address>
 <?php view::end('content');?>

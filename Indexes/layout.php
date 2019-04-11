@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
-		<title>Index of <?php echo urldecode($path);?></title>
+		<title>Index of <?php $PDLists = array();foreach((array)$navs as $n=>$l){array_push($PDLists,$l);}$PDTitle = $PDLists[count($PDLists)-1];echo $PDTitle;?></title>
 		<style>
 img[alt=access],img[alt=database]{
 	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWCAMAAAD3n0w0AAAAZlBMVEUAAAAAAAAzMzOZmZnw8PDo6OgzM5ns7Ozq6ur09PTu7u7m5uby8vLk4+T29vYnJyfl5eX+/v7g4ODS0uDi4uLd3dxcXK36+vr4+PigoKHn5/Hf3+nY2OTV1eLOz9xeXq6np6empqU7xVq/AAAAAXRSTlMAQObYZgAAANFJREFUGNNVztF6gyAMhuEmIoIgOLCobddu93+T+yG6rZ9n75MEL/y/yxF/oNu6rlvgwH/4eOnyuYXA1vOJD13L1rL3igXXl8ZYLhWVGrnhTaNg9d0Tt69NFh2CzUUpkipuGfeyfqpxHDrUMOCeLk+cGwZzorXW39VXJBT3XhCGV+M35swenSAIqySTNAvC8AQZ0/fO0STYDAib5xNHmDFUbZpoOXCA9eSqLZQEmwGrpV8E9S7u07KkLl4FYVjd5Ze6A2GymtIVCXL3FgMRvQf8AVAIDNC5n8MxAAAAAElFTkSuQmCC");
@@ -97,5 +97,6 @@ img[alt=word]{
 	<body>
 <?php view::section('content');?>
 
+		<address><?php echo $_SERVER['SERVER_SOFTWARE'];?> Server at <?php echo $_SERVER['SERVER_NAME'];?> Port <?php echo $_SERVER['SERVER_PORT'];?></address>
 	</body>
 </html>
