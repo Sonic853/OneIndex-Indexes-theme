@@ -26,7 +26,7 @@ You can try this [demo](https://demo.853lab.com/ "demo").
 
 # 中文说明
 
-使OneIndex看起来像网站的索引目录一样，理论可规避来自[OneIndex-ShareIndex](https://github.com/Mikubill/OneIndex-ShareIndex "OneIndex-ShareIndex")的爬虫抓取
+使OneIndex看起来像网站的索引目录一样，理论可规避来自[OneIndex-ShareIndex](https://github.com/hqyyqh/OneIndex-ShareIndex "作者：Mikubill")的爬虫抓取
 
 ## 预览
 
